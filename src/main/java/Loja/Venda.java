@@ -4,7 +4,9 @@ import javax.swing.*;
 
 import static javax.swing.JOptionPane.*;
 
-
+/*
+/ Criando a classe venda onde vai ser o processo de cadastro do cliente e produto e a realização da venda.
+ */
 public class Venda {
 
     static Cliente[] clientes = null;
@@ -69,6 +71,10 @@ public class Venda {
 
     }
 
+    /*
+    / Realização do cadastro cliente
+    */
+
     public static void CadastrarCliente() {
 
         int QuantClient;
@@ -122,6 +128,10 @@ public class Venda {
 
     }
 
+        /*
+    / Realização da consulta dos cliente.
+    */
+
     public static void ConsultarCliente() {
 
         if (clientes == null) {
@@ -153,6 +163,9 @@ public class Venda {
         }
 
     }
+    /*
+    / Realização do cadastro dos produtos
+    */
 
     public static void CadastrarProdutos() {
 
@@ -192,6 +205,9 @@ public class Venda {
         }
         showMessageDialog(null, "Produto Cadastrado!");
     }
+    /*
+    / Realização da consulta dos produtos.
+    */
 
     public static void ConsultarProdutos() {
 
@@ -223,7 +239,11 @@ public class Venda {
         }
     }
 
-    public static void VendaProduto() {
+    /*
+    / Realização do processo de venda.
+    */
+    public static String VendaProduto() {
+        int i = 0;
         if (produtos == null) {
 
             showMessageDialog(null,
@@ -242,10 +262,8 @@ public class Venda {
                 PosicaoProduto = IdentificaProduto(NomeDoProduto);
             }
 
-            int i = 0;
             int ImputUser = Integer.parseInt(showInputDialog("- CADASTRAR VENDA:\n\nDigite a quantidade: "
                     + produtos[i].getDescrProduto()));
-
 
             int QuantAtual = produtos[PosicaoProduto].getQuantEstoque();
 
@@ -259,8 +277,12 @@ public class Venda {
                     + lista)));
         }
 
+        return null;
     }
 
+    /*
+    / Processo criando para Identificar se o Cliente digitado esta na base cadastrada.
+     */
     public static Integer IdentificaCliente(String NomeCliente) {
         for (int i = 0; i < clientes.length; i++) {
             if (NomeCliente.equals(clientes[i].getNome())) {
@@ -270,6 +292,9 @@ public class Venda {
         return null;
     }
 
+    /*
+    / Processo criando para Identificar se o Produto digitado esta na base cadastrada .
+     */
     public static Integer IdentificaProduto(String NomeProduto) {
         for (int i = 0; i < produtos.length; i++) {
             if (NomeProduto.equals(produtos[i].getDescrProduto())) {

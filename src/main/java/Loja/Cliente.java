@@ -1,5 +1,8 @@
 package Loja;
 
+/*
+/ Criação da classe Cliente.
+ */
 public class Cliente {
 
     private String nome;

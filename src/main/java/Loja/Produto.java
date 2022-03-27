@@ -1,4 +1,7 @@
 package Loja;
+/*
+/ Criação da classe Produto.
+ */
 
 public class Produto {
     int CodProduto;
