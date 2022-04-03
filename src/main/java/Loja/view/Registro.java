@@ -10,11 +10,11 @@ import static Loja.controller.Venda.*;
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * Tela de inicialização do sistema
+ */
 public class Registro {
 
-    /**
-     * Tela de inicialização do sistema
-     */
     static int confirma = -1;
 
     public static void main(String[] args) {

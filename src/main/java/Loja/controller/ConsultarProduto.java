@@ -4,6 +4,9 @@ import static Loja.controller.Venda.lista;
 import static Loja.controller.Venda.produtos;
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * / Realiza a consulta dos produtos cadastrado.
+ */
 public class ConsultarProduto {
     public static void ConsultarProdutos() {
 

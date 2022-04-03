@@ -3,11 +3,11 @@ package Loja.controller;
 import static Loja.controller.CadastrarCliente.clientes;
 import static javax.swing.JOptionPane.showMessageDialog;
 
+/**
+ * / Realiza a consulta do clientes cadastrado.
+ */
 public class ConsultarCliente {
 
-    /**
-     * / Realiza a consulta do cliente cadastrado
-     */
     static String lista;
 
     public static void ConsultarCliente() {
