@@ -1,14 +1,15 @@
-package Loja;
+package Loja.model;
 
-/*
+/**
 / Criação da classe Cliente.
  */
 public class Cliente {
 
     private String nome;
     private String endereco;
-    private String CPF;
-    int senha;
+    private Integer cpf;
+    private int senha;
+
 
     public String getNome() {
         return nome;
@@ -26,12 +27,12 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public String getCPF() {
-        return CPF;
+    public Integer getcpf() {
+        return cpf;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setcpf(Integer cpf) {
+        this.cpf = cpf;
     }
 
     public int getSenha() {

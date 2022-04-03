@@ -1,43 +1,43 @@
-package Loja;
-/*
+package Loja.model;
+
+/**
 / Criação da classe Produto.
  */
-
 public class Produto {
-    int CodProduto;
-    String DescrProduto;
-    int QuantEstoque;
-    double Preco;
+    private int codProduto;
+    private String descrProduto;
+    private int quantEstoque;
+    private double preco;
 
     public int getCodProduto() {
-        return CodProduto;
+        return codProduto;
     }
 
     public void setCodProduto(int codProduto) {
-        CodProduto = codProduto;
+        this.codProduto = codProduto;
     }
 
     public String getDescrProduto() {
-        return DescrProduto;
+        return descrProduto;
     }
 
     public void setDescrProduto(String descrProduto) {
-        DescrProduto = String.valueOf(descrProduto);
+        this.descrProduto = String.valueOf(descrProduto);
     }
 
     public int getQuantEstoque() {
-        return QuantEstoque;
+        return quantEstoque;
     }
 
     public void setQuantEstoque(int quantEstoque) {
-        QuantEstoque = quantEstoque;
+        this.quantEstoque = quantEstoque;
     }
 
     public double getPreco() {
-        return Preco;
+        return preco;
     }
 
     public void setPreco(double preco) {
-        Preco = preco;
+        this.preco = preco;
     }
 }
