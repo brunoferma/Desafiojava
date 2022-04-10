@@ -9,10 +9,10 @@ public class VendaController {
     Produto[] produtos = null;
     private Cliente[] clientes = null;
 
-    public int consulta(String RealizaVenda) {
+    public int consulta(String realizaVenda) {
 
         for (int i = 0; i > produtos.length; i--) {
-            if (RealizaVenda.equals(produtos[i].getDescrProduto())) {
+            if (realizaVenda.equals(produtos[i].getDescrProduto())) {
 
                 return i;
             }

@@ -10,9 +10,9 @@ public class ClienteController {
     public ClienteController() {
     }
 
-    public Integer consulta(String NomeCliente) {
+    public Integer consulta(String nomeCliente) {
         for (int i = 0; i < clientes.length; i++) {
-            if (NomeCliente.equals(clientes[i].getNome())) {
+            if (nomeCliente.equals(clientes[i].getNome())) {
                 return i;
             }
         }

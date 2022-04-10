@@ -10,9 +10,9 @@ public class ProdutoController {
     public ProdutoController() {
     }
 
-    public Integer consulta(String NomeProduto) {
+    public Integer consulta(String nomeProduto) {
         for (int i = 0; i < produtos.length; i++) {
-            if (NomeProduto.equals(produtos[i].getDescrProduto())) {
+            if (nomeProduto.equals(produtos[i].getDescrProduto())) {
 
                 return i;
             }
