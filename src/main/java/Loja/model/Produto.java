@@ -1,19 +1,23 @@
 package Loja.model;
 
-/**
-/ Criação da classe Produto.
- */
 public class Produto {
-    private int codProduto;
+    private String codProduto;
     private String descrProduto;
     private int quantEstoque;
     private double preco;
 
-    public int getCodProduto() {
+    public Produto() {
+        this.codProduto = this.codProduto;
+        this.descrProduto = this.descrProduto;
+        this.quantEstoque = this.quantEstoque;
+        this.preco = this.preco;
+    }
+
+    public String getCodProduto() {
         return codProduto;
     }
 
-    public void setCodProduto(int codProduto) {
+    public void setCodProduto(String codProduto) {
         this.codProduto = codProduto;
     }
 

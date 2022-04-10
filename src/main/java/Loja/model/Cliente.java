@@ -1,15 +1,18 @@
 package Loja.model;
 
-/**
-/ Criação da classe Cliente.
- */
 public class Cliente {
 
     private String nome;
     private String endereco;
-    private Integer cpf;
-    private int senha;
+    private String cpf;
+    private String senha;
 
+    public Cliente() {
+        this.nome = this.nome;
+        this.endereco = this.endereco;
+        this.cpf = this.cpf;
+        this.senha = this.senha;
+    }
 
     public String getNome() {
         return nome;
@@ -27,19 +30,19 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public Integer getcpf() {
+    public String getcpf() {
         return cpf;
     }
 
-    public void setcpf(Integer cpf) {
+    public void setcpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public int getSenha() {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(int senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 }
