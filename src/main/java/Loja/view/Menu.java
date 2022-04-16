@@ -1,27 +1,38 @@
 package Loja.view;
 
+import Loja.controller.ClientController;
+import Loja.controller.ProductController;
+import Loja.controller.SaleController;
+
 import javax.swing.*;
 
-import static Loja.controller.ConsultarCliente.ConsultarCliente;
-import static Loja.controller.CadastrarProduto.CadastrarProdutos;
-import static Loja.controller.CadastrarCliente.CadastrarCliente;
-import static Loja.controller.ConsultarProduto.ConsultarProdutos;
-import static Loja.controller.Venda.*;
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-/**
- * Tela de inicialização do sistema
- */
-public class Registro {
+public class Menu {
+
+    private final ClientActionMenu clientActionMenu;
+    private final ProductActionMenu productActionMenu;
+    private final SaleActionMenu saleActionMenu;
 
     static int confirma = -1;
+    String op;
+    int opcao;
 
-    public static void main(String[] args) {
+    public Menu() {
+        JOptionPane jOptionPane = new JOptionPane();
 
-        String op;
-        int opcao;
+        ClientController clientController = new ClientController();
+        ProductController productController = new ProductController();
+        SaleController saleController = new SaleController(clientController, productController);
 
+        this.clientActionMenu = new ClientActionMenu(clientController);
+        this.productActionMenu = new ProductActionMenu(productController);
+        this.saleActionMenu = new SaleActionMenu(jOptionPane, saleController);
+
+    }
+
+    public void infoMenu() {
         do {
 
             op = JOptionPane.showInputDialog("SISTEMA DE VENDA - v1.0:\n\n"
@@ -42,23 +53,23 @@ public class Registro {
 
             if (opcao == 1) {
 
-                CadastrarCliente();
+                clientActionMenu.register();
 
             } else if (opcao == 2) {
 
-                ConsultarCliente();
+                clientActionMenu.search();
 
             } else if (opcao == 3) {
 
-                CadastrarProdutos();
+                productActionMenu.register();
 
             } else if (opcao == 4) {
 
-                ConsultarProdutos();
+                productActionMenu.search();
 
             } else if (opcao == 5) {
 
-                VendaProduto();
+                saleActionMenu.sale();
 
             } else if (opcao == 6 || opcao == 0) {
 
@@ -73,6 +84,7 @@ public class Registro {
         } while (confirma != 0);
 
     }
+
     public static void Sair() {
 
         confirma = showConfirmDialog(null,
@@ -81,3 +93,4 @@ public class Registro {
     }
 
 }
+
