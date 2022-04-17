@@ -2,21 +2,24 @@ package Loja.controller;
 
 import Loja.model.Produto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProdutoController {
 
-    int i = 0;
-    Produto[] produtos = new Produto[i];
+    private List<Produto>produtos = new ArrayList<Produto>();
 
-    public ProdutoController() {
+    public void cadastrar(String codProd, String descProd, int produtoQtd, double preco){
+        Produto produto = new Produto(codProd, descProd, produtoQtd, preco);
+        produtos.add(produto);
     }
 
-    public Integer consulta(String nomeProduto) {
-        for (int i = 0; i < produtos.length; i++) {
-            if (nomeProduto.equals(produtos[i].getDescrProduto())) {
-
-                return i;
+    public Produto consulta(final String codProd) throws Exception {
+        for (Produto produto: produtos) {
+            if (produto.getCodProd().equals(codProd)) {
+                return produto;
             }
         }
-        return null;
+        throw new Exception("Produto nao encontrado " + codProd );
     }
 }

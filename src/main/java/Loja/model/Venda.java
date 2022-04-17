@@ -1,11 +1,13 @@
 package Loja.model;
 
+import java.util.List;
+
 public class Venda {
 
     private Cliente[] clientes;
     private Produto[] produtos;
 
-    public Venda(Cliente cliente, Produto[] produtos) {
+    public Venda(Cliente cliente, List<Produto> produtos) {
         this.clientes = clientes;
     }
 

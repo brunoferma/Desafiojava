@@ -2,20 +2,24 @@ package Loja.controller;
 
 import Loja.model.Cliente;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClienteController {
 
-    int i = 0;
-    private Cliente[] clientes = new Cliente[i];
+    private List<Cliente> clientes = new ArrayList<Cliente>();
 
-    public ClienteController() {
+    public void cadastrar (String nome, String cpf, String endereco, String senha){
+        Cliente cliente = new Cliente(nome, cpf, endereco,senha);
+        clientes.add(cliente);
     }
 
-    public Integer consulta(String nomeCliente) {
-        for (int i = 0; i < clientes.length; i++) {
-            if (nomeCliente.equals(clientes[i].getNome())) {
-                return i;
+    public Cliente consulta(final String cpf) throws Exception{
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
             }
         }
-        return null;
+        throw new Exception("Cliente nao encontrado " + cpf);
     }
 }

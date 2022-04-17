@@ -1,87 +1,49 @@
 package Loja.view;
 
+import Loja.controller.ProdutoController;
 import Loja.model.Produto;
 
-import static javax.swing.JOptionPane.showInputDialog;
+import javax.swing.*;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class ProdutoActionMenu {
 
-    Produto[] produtos = null;
-    String lista = null;
-    private final int produtoController;
+    private ProdutoController produtoController;
+    private JOptionPane jOptionPane;
 
-    public ProdutoActionMenu(int produtoController) {
+    public ProdutoActionMenu() {
         this.produtoController = produtoController;
+        this.jOptionPane = jOptionPane;
     }
 
-    public void cadastrarProdutos() {
+    public void cadastrar() {
 
-        int quantProd;
+        String codProd = JOptionPane.showInputDialog("- CADASTRAR  PRODUTO:\n\nDigite o codigo do produto: ");
 
-        String quant = showInputDialog("- CADASTRAR PRODUTO:\n\nQuantos produtos Deseja Cadastrar: ");
+        String descProd = JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o Nome do produto: ");
 
-        if (quant == null) {
+        int qtd = Integer.parseInt(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade : "));
 
-            quant = "0";
+        double preco = Double.parseDouble(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o valor: "));
 
-        }
-        quantProd = Integer.parseInt(quant);
+        produtoController.cadastrar(codProd, descProd, qtd, preco);
 
-        produtos = new Produto[quantProd];
-
-        for (int i = 0; i < produtos.length; i++) {
-
-            produtos[i] = new Produto();
-
-        }
-        for (int i = 0; i < quantProd; i++) {
-
-            produtos[i].setDescrProduto(showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o nome do produto: "
-                    + produtos[i].getDescrProduto()));
-            produtos[i].setCodProduto(String.valueOf(Integer.parseInt(showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o Codigo do produto: "
-                    + (i + 1) + "/" + quantProd + ")"))));
-            produtos[i].setQuantEstoque(Integer.parseInt(showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade: "
-                    + produtos[i].getDescrProduto())));
-            produtos[i].setPreco(Double.parseDouble(showInputDialog("- CADASTRAR PRODUTO:\n\nDIGITE O VALOR: "
-                    + produtos[i].getDescrProduto())));
-        }
-
-        for (int i = 0; i < quantProd; i++) {
-
-            showMessageDialog(null, produtos[i].getDescrProduto());
-        }
-        showMessageDialog(null, "Produto Cadastrado!");
+        showMessageDialog(null, "Cadastrado com sucesso");
 
     }
 
-    public void consultarProdutos() {
+    public void consultar() {
 
-        if (produtos == null) {
+        String codProduto = JOptionPane.showInputDialog("Digite o codigo do produto: ");
 
-            showMessageDialog(null, "- CONSULTAR PRODUTO:\n\nVocê precisa cadastrar pelo menos 1 produto!\n\n");
-
-        } else {
-
-            int total = 1;
-            lista = "";
-
-            for (int i = 0; i < produtos.length; i++) {
-
-                lista += "Produto " + (i + 1) + "\n";
-                lista += "Nome: " + produtos[i].getDescrProduto() + "\n";
-                lista += "Codigo do produto: " + produtos[i].getCodProduto() + "\n";
-                lista += "Quantidade em estoque: " + produtos[i].getQuantEstoque() + "\n";
-                lista += "Valor: " + produtos[i].getPreco() + "\n";
-                lista += "\n\n";
-                total++;
-
-            }
-
-            showMessageDialog(null, "- CONSULTAR PRODUTO:\n\n" + "Total de "
-                    + (total - 1) + " Produtos Cadastrados:\n\n" + lista);
+        try{
+          Produto produto = produtoController.consulta(codProduto);
+            System.out.println(produto.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-    }
 
+    }
 }
