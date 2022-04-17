@@ -49,6 +49,7 @@ public class Produto {
     @Override
         public String toString() {
             StringBuilder builder = new StringBuilder();
+
             return builder.append("************************\n")
                     .append("Codigo: ").append(this.codProd).append("\n")
                     .append("Descrição: ").append(this.descrProd).append("\n")

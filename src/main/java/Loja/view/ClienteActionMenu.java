@@ -13,18 +13,19 @@ public class ClienteActionMenu {
     private ClienteController clienteController;
     private JOptionPane jOptionPane;
 
-    public ClienteActionMenu() {
+    public ClienteActionMenu(JOptionPane jOptionPane, ClienteController clienteController) {
+        this.clienteController = clienteController;
     }
 
     public void cadastrar() {
 
-        String nome = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
+        String nome = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
 
-        String cpf = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite O CPF do Cliente: ");
+        String cpf = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite O CPF do Cliente: ");
 
-        String endereco = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite endereço: ");
+        String endereco = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite endereço: ");
 
-        String senha = showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
+        String senha = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
 
         clienteController.cadastrar(nome, cpf, endereco, senha);
 
@@ -42,7 +43,8 @@ public class ClienteActionMenu {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-    }}
+    }
+}
 
 
 

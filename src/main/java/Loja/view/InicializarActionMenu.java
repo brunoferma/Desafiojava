@@ -2,6 +2,7 @@ package Loja.view;
 
 import Loja.controller.ClienteController;
 import Loja.controller.ProdutoController;
+import Loja.controller.VendaController;
 
 import javax.swing.*;
 
@@ -12,25 +13,27 @@ public class InicializarActionMenu {
 
     private JOptionPane jOptionPane;
 
+    private final ClienteController clienteController;
+    private final ProdutoController produtoController;
+    private final VendaController vendaController;
     private final ClienteActionMenu clienteActionMenu;
     private final ProdutoActionMenu produtoActionMenu;
     private final VendActionMenu vendActionMenu;
-    private final ClienteController clienteController;
-    private final ProdutoController produtoController;
 
     public InicializarActionMenu() {
+        this.jOptionPane = new JOptionPane(System.in);
 
-        this.jOptionPane = new JOptionPane();
-
-        this.clienteActionMenu = new ClienteActionMenu();
-        this.produtoActionMenu = new ProdutoActionMenu();
-        this. clienteController = new ClienteController();
+        this.clienteController = new ClienteController();
         this.produtoController = new ProdutoController();
-        this.vendActionMenu = new VendActionMenu();
+        this.vendaController = new VendaController(clienteController, produtoController);
+
+        this.clienteActionMenu = new ClienteActionMenu(jOptionPane, clienteController);
+        this.produtoActionMenu = new ProdutoActionMenu(jOptionPane, produtoController);
+        this.vendActionMenu = new VendActionMenu(jOptionPane, vendaController);
+
 
     }
-
-    int confirma = -1;
+        int confirma = -1;
 
     public void inicializar() {
 
@@ -56,23 +59,23 @@ public class InicializarActionMenu {
 
             if (opcao == 1) {
 
-                clienteActionMenu.cadastrar();
+                this.clienteActionMenu.cadastrar();
 
             } else if (opcao == 2) {
 
-                clienteActionMenu.consultar();
+                this.clienteActionMenu.consultar();
 
             } else if (opcao == 3) {
 
-                produtoActionMenu.cadastrar();
+                this.produtoActionMenu.cadastrar();
 
             } else if (opcao == 4) {
 
-                produtoActionMenu.consultar();
+                this.produtoActionMenu.consultar();
 
             } else if (opcao == 5) {
 
-               vendActionMenu.cadastrar();
+               this.vendActionMenu.cadastrar();
 
             } else if (opcao == 6 || opcao == 0) {
 

@@ -4,26 +4,27 @@ import java.util.List;
 
 public class Venda {
 
-    private Cliente[] clientes;
-    private Produto[] produtos;
+    private Cliente cliente;
+    private List<Produto> produtos;
 
     public Venda(Cliente cliente, List<Produto> produtos) {
-        this.clientes = clientes;
+        this.cliente = cliente;
+        this.produtos = produtos;
     }
 
-    public Cliente[] getCliente() {
-        return clientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public void setCliente(Cliente cliente) {
-        this.clientes = clientes;
+        this.cliente = cliente;
     }
 
-    public Produto[] getProdutos() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(Produto[] produtos) {
+    public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
 }

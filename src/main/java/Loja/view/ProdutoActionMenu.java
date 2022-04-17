@@ -12,9 +12,9 @@ public class ProdutoActionMenu {
     private ProdutoController produtoController;
     private JOptionPane jOptionPane;
 
-    public ProdutoActionMenu() {
-        this.produtoController = produtoController;
+    public ProdutoActionMenu(JOptionPane jOptionPane, ProdutoController produtoController) {
         this.jOptionPane = jOptionPane;
+        this.produtoController = produtoController;
     }
 
     public void cadastrar() {
@@ -23,11 +23,11 @@ public class ProdutoActionMenu {
 
         String descProd = JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o Nome do produto: ");
 
-        int qtd = Integer.parseInt(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade : "));
+        int prodQtd = Integer.parseInt(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade : "));
 
         double preco = Double.parseDouble(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o valor: "));
 
-        produtoController.cadastrar(codProd, descProd, qtd, preco);
+        produtoController.cadastrar(codProd, descProd, prodQtd, preco);
 
         showMessageDialog(null, "Cadastrado com sucesso");
 
@@ -37,8 +37,8 @@ public class ProdutoActionMenu {
 
         String codProduto = JOptionPane.showInputDialog("Digite o codigo do produto: ");
 
-        try{
-          Produto produto = produtoController.consulta(codProduto);
+        try {
+            Produto produto = produtoController.consulta(codProduto);
             System.out.println(produto.toString());
         } catch (Exception e) {
             e.printStackTrace();

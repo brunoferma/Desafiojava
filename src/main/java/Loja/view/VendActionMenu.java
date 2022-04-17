@@ -14,35 +14,34 @@ public class VendActionMenu {
     private JOptionPane jOptionPane;
     private VendaController vendaController;
 
-
-    public VendActionMenu() {
+    public VendActionMenu(JOptionPane jOptionPane, VendaController vendaController) {
         this.jOptionPane = jOptionPane;
         this.vendaController = vendaController;
     }
 
-
     public void cadastrar() {
 
         boolean cadProduto = true;
-        Map<String, Integer> produtos = new HashMap<>();
+        Map<String, Integer> produtos = new HashMap<String, Integer>();
 
-            String cpf = showInputDialog("- CADASTRAR VENDA:\n\nDigite o Nome do Cliente: ");
+        String cpf = showInputDialog("- CADASTRAR VENDA:\n\nDigite o Nome do Cliente: ");
 
-            do{
-            boolean codProduto = Boolean.parseBoolean(showInputDialog("- CADASTRAR VENDA:\n\nDigite o nome do produto: "));
+        do {
+            String codProduto = showInputDialog("- CADASTRAR VENDA:\n\nDigite o nome do produto: ");
 
             String qtdProduto = showInputDialog("- CADASTRAR VENDA:\n\nDigite a quantidade: ");
 
-            produtos.put(String.valueOf(codProduto), Integer.valueOf(qtdProduto));
+            produtos.put(codProduto, Integer.valueOf(qtdProduto));
 
-            String keepCadastro = showInputDialog("Deseja cadastrar mais produtos ? [S/N] ?");
+            String contRegistro = showInputDialog("Deseja cadastrar mais produtos ? [Sim/Nao] ?");
 
-            codProduto = keepCadastro.equals("s");
+            cadProduto = contRegistro.equals("sim".toUpperCase());
 
-    }while (cadProduto);
-            vendaController.cadastrar(cpf,produtos);
-            System.out.println("Venda cadastrada com sucesso");
-}}
+        } while (cadProduto);
+        vendaController.cadastrar(cpf, produtos);
+        System.out.println("Venda cadastrada com sucesso");
+    }
+}
 
 
 

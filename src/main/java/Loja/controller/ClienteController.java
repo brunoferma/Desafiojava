@@ -5,6 +5,7 @@ import Loja.model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ClienteController {
 
     private List<Cliente> clientes = new ArrayList<Cliente>();
@@ -20,6 +21,6 @@ public class ClienteController {
                 return cliente;
             }
         }
-        throw new Exception("Cliente nao encontrado " + cpf);
+        throw new Exception("Cliente nao cadastrado " + cpf);
     }
 }

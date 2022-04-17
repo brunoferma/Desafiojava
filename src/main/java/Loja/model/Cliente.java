@@ -49,6 +49,7 @@ public class Cliente {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
+
         return builder.append("************************\n")
                 .append("Nome: ").append(this.name).append("\n")
                 .append("CPF: ").append(this.cpf).append("\n")

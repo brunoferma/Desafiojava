@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ProdutoController {
 
-    private List<Produto>produtos = new ArrayList<Produto>();
+    private List<Produto> produtos = new ArrayList<Produto>();
 
     public void cadastrar(String codProd, String descProd, int produtoQtd, double preco){
         Produto produto = new Produto(codProd, descProd, produtoQtd, preco);
