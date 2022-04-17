@@ -1,6 +1,6 @@
 package Loja.view;
 
-import Loja.controller.VendaController;
+import Loja.controller.SaleController;
 
 import javax.swing.*;
 
@@ -9,25 +9,25 @@ import java.util.Map;
 
 import static javax.swing.JOptionPane.showInputDialog;
 
-public class VendActionMenu {
+public class SaleActionMenu {
 
     private JOptionPane jOptionPane;
-    private VendaController vendaController;
+    private SaleController vendaController;
 
-    public VendActionMenu(JOptionPane jOptionPane, VendaController vendaController) {
+    public SaleActionMenu(JOptionPane jOptionPane, SaleController vendaController) {
         this.jOptionPane = jOptionPane;
         this.vendaController = vendaController;
     }
 
-    public void cadastrar() {
+    public void register() {
 
         boolean cadProduto = true;
         Map<String, Integer> produtos = new HashMap<String, Integer>();
 
-        String cpf = showInputDialog("- CADASTRAR VENDA:\n\nDigite o Nome do Cliente: ");
+        String cpf = showInputDialog("- CADASTRAR VENDA:\n\nDigite o CPF do cliente cadastrado: ");
 
         do {
-            String codProduto = showInputDialog("- CADASTRAR VENDA:\n\nDigite o nome do produto: ");
+            String codProduto = showInputDialog("- CADASTRAR VENDA:\n\nDigite o codigo produto: ");
 
             String qtdProduto = showInputDialog("- CADASTRAR VENDA:\n\nDigite a quantidade: ");
 
@@ -38,8 +38,7 @@ public class VendActionMenu {
             cadProduto = contRegistro.equals("sim".toUpperCase());
 
         } while (cadProduto);
-        vendaController.cadastrar(cpf, produtos);
-        System.out.println("Venda cadastrada com sucesso");
+        vendaController.register(cpf, produtos);
     }
 }
 

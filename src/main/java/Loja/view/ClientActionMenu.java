@@ -1,23 +1,22 @@
 package Loja.view;
 
-import Loja.controller.ClienteController;
-import Loja.model.Cliente;
+import Loja.controller.ClientController;
+import Loja.model.Client;
 
 import javax.swing.*;
 
-import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class ClienteActionMenu {
+public class ClientActionMenu {
 
-    private ClienteController clienteController;
+    private ClientController clienteController;
     private JOptionPane jOptionPane;
 
-    public ClienteActionMenu(JOptionPane jOptionPane, ClienteController clienteController) {
+    public ClientActionMenu(JOptionPane jOptionPane, ClientController clienteController) {
         this.clienteController = clienteController;
     }
 
-    public void cadastrar() {
+    public void register() {
 
         String nome = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
 
@@ -27,21 +26,21 @@ public class ClienteActionMenu {
 
         String senha = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
 
-        clienteController.cadastrar(nome, cpf, endereco, senha);
+        clienteController.register(nome.toUpperCase(), cpf, endereco, senha);
 
         showMessageDialog(null, "Cadastrado com sucesso");
     }
 
-    public void consultar() {
+    public void search() {
 
             String cpf = JOptionPane.showInputDialog("Entre com o cpf do cliente: ");
 
             try{
-                Cliente cliente = clienteController.consulta(cpf);
+                Client cliente = clienteController.search(cpf);
+                showMessageDialog(null, cliente.toString());
 
-                System.out.println(cliente.toString());
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                showMessageDialog(null, e.getMessage());
             }
     }
 }

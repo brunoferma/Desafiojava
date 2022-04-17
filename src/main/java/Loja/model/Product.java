@@ -1,13 +1,13 @@
 package Loja.model;
 
-public class Produto {
+public class Product {
 
         private String codProd;
         private String descrProd;
         private int produtoQtd;
         private double preco;
 
-        public Produto(String codProd, String descrProd, int produtoQtd, double preco) {
+        public Product(String codProd, String descrProd, int produtoQtd, double preco) {
             this.codProd = codProd;
             this.descrProd = descrProd;
             this.produtoQtd = produtoQtd;

@@ -1,41 +1,41 @@
 package Loja.view;
 
-import Loja.controller.ClienteController;
-import Loja.controller.ProdutoController;
-import Loja.controller.VendaController;
+import Loja.controller.ClientController;
+import Loja.controller.ProductController;
+import Loja.controller.SaleController;
 
 import javax.swing.*;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class InicializarActionMenu {
+public class InitializeActionMenu {
 
     private JOptionPane jOptionPane;
 
-    private final ClienteController clienteController;
-    private final ProdutoController produtoController;
-    private final VendaController vendaController;
-    private final ClienteActionMenu clienteActionMenu;
-    private final ProdutoActionMenu produtoActionMenu;
-    private final VendActionMenu vendActionMenu;
+    private final ClientController clienteController;
+    private final ProductController produtoController;
+    private final SaleController vendaController;
+    private final ClientActionMenu clienteActionMenu;
+    private final ProductActionMenu produtoActionMenu;
+    private final SaleActionMenu vendActionMenu;
 
-    public InicializarActionMenu() {
+    public InitializeActionMenu() {
         this.jOptionPane = new JOptionPane(System.in);
 
-        this.clienteController = new ClienteController();
-        this.produtoController = new ProdutoController();
-        this.vendaController = new VendaController(clienteController, produtoController);
+        this.clienteController = new ClientController();
+        this.produtoController = new ProductController();
+        this.vendaController = new SaleController(clienteController, produtoController);
 
-        this.clienteActionMenu = new ClienteActionMenu(jOptionPane, clienteController);
-        this.produtoActionMenu = new ProdutoActionMenu(jOptionPane, produtoController);
-        this.vendActionMenu = new VendActionMenu(jOptionPane, vendaController);
+        this.clienteActionMenu = new ClientActionMenu(jOptionPane, clienteController);
+        this.produtoActionMenu = new ProductActionMenu(jOptionPane, produtoController);
+        this.vendActionMenu = new SaleActionMenu(jOptionPane, vendaController);
 
 
     }
         int confirma = -1;
 
-    public void inicializar() {
+    public void initialize() {
 
 
         String op;
@@ -59,23 +59,23 @@ public class InicializarActionMenu {
 
             if (opcao == 1) {
 
-                this.clienteActionMenu.cadastrar();
+                this.clienteActionMenu.register();
 
             } else if (opcao == 2) {
 
-                this.clienteActionMenu.consultar();
+                this.clienteActionMenu.search();
 
             } else if (opcao == 3) {
 
-                this.produtoActionMenu.cadastrar();
+                this.produtoActionMenu.register();
 
             } else if (opcao == 4) {
 
-                this.produtoActionMenu.consultar();
+                this.produtoActionMenu.search();
 
             } else if (opcao == 5) {
 
-               this.vendActionMenu.cadastrar();
+               this.vendActionMenu.register();
 
             } else if (opcao == 6 || opcao == 0) {
 

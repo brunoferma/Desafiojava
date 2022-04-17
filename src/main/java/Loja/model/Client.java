@@ -1,13 +1,13 @@
 package Loja.model;
 
-public class Cliente {
+public class Client {
 
     private String name;
     private String cpf;
     private String endereco;
     private String senha;
 
-    public Cliente(String nome, String cpf, String endereco, String senha) {
+    public Client(String nome, String cpf, String endereco, String senha) {
         this.name = nome;
         this.cpf = cpf;
         this.endereco = endereco;

@@ -1,23 +1,23 @@
 package Loja.view;
 
-import Loja.controller.ProdutoController;
-import Loja.model.Produto;
+import Loja.controller.ProductController;
+import Loja.model.Product;
 
 import javax.swing.*;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class ProdutoActionMenu {
+public class ProductActionMenu {
 
-    private ProdutoController produtoController;
+    private ProductController produtoController;
     private JOptionPane jOptionPane;
 
-    public ProdutoActionMenu(JOptionPane jOptionPane, ProdutoController produtoController) {
+    public ProductActionMenu(JOptionPane jOptionPane, ProductController produtoController) {
         this.jOptionPane = jOptionPane;
         this.produtoController = produtoController;
     }
 
-    public void cadastrar() {
+    public void register() {
 
         String codProd = JOptionPane.showInputDialog("- CADASTRAR  PRODUTO:\n\nDigite o codigo do produto: ");
 
@@ -27,23 +27,19 @@ public class ProdutoActionMenu {
 
         double preco = Double.parseDouble(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o valor: "));
 
-        produtoController.cadastrar(codProd, descProd, prodQtd, preco);
-
-        showMessageDialog(null, "Cadastrado com sucesso");
+        produtoController.register(codProd, descProd.toUpperCase(), prodQtd, preco);
 
     }
 
-    public void consultar() {
+    public void search() {
 
         String codProduto = JOptionPane.showInputDialog("Digite o codigo do produto: ");
 
         try {
-            Produto produto = produtoController.consulta(codProduto);
-            System.out.println(produto.toString());
+            Product produto = produtoController.search(codProduto);
+            showMessageDialog(null, produto.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }
