@@ -7,7 +7,7 @@ public class Product {
         private int produtoQtd;
         private double preco;
 
-        public Product(String codProd, String descrProd, int produtoQtd, double preco) {
+        public Product(String codProd, int produtoQtd, double preco) {
             this.codProd = codProd;
             this.descrProd = descrProd;
             this.produtoQtd = produtoQtd;

@@ -2,9 +2,11 @@ package Loja;
 
 import Loja.view.InitializeActionMenu;
 
+import java.sql.SQLException;
+
 public class Initialize {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         new InitializeActionMenu().initialize();
     }
 }

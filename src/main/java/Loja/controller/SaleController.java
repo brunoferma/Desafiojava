@@ -10,7 +10,6 @@ import java.util.Map;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
-
 public class SaleController {
 
     private List<Sale> sales = new ArrayList<Sale>();

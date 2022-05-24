@@ -1,9 +1,14 @@
 package Loja.view;
 
+import Loja.Dao.CreateConetion;
 import Loja.controller.ProductController;
 import Loja.model.Product;
 
 import javax.swing.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -17,17 +22,22 @@ public class ProductActionMenu {
         this.produtoController = produtoController;
     }
 
-    public void register() {
-
-        String codProd = JOptionPane.showInputDialog("- CADASTRAR  PRODUTO:\n\nDigite o codigo do produto: ");
+    public void register() throws SQLException {
 
         String descProd = JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o Nome do produto: ");
-
-        int prodQtd = Integer.parseInt(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade : "));
-
+        int produtoqtd = Integer.parseInt(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite a quantidade : "));
         double preco = Double.parseDouble(JOptionPane.showInputDialog("- CADASTRAR PRODUTO:\n\nDigite o valor: "));
 
-        produtoController.register(codProd, descProd.toUpperCase(), prodQtd, preco);
+        Connection conexao = CreateConetion.getConexao();
+        String sql = "INSERT INTO product (descProd, produtoqtd, preco) VALUES (?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, descProd);
+        stmt.setInt(2, produtoqtd);
+        stmt.setDouble(3, preco);
+         produtoController.register(descProd, produtoqtd, preco);
+        stmt.execute();
+        showMessageDialog(null, "Cadastrado com sucesso");
+        conexao.close();
 
     }
 

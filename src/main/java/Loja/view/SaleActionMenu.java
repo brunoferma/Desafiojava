@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showInputDialog;
 
 public class SaleActionMenu {
@@ -33,7 +34,7 @@ public class SaleActionMenu {
 
             produtos.put(codProduto, Integer.valueOf(qtdProduto));
 
-            String contRegistro = showInputDialog("Deseja cadastrar mais produtos ? [Sim/Nao] ?");
+            String contRegistro = String.valueOf(showConfirmDialog(null, "Deseja cadastrar mais produtos ?"));
 
             cadProduto = contRegistro.equals("sim".toUpperCase());
 

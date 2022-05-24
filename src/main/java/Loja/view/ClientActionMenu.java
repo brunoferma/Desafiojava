@@ -1,9 +1,15 @@
 package Loja.view;
 
+import Loja.Dao.CreateConetion;
+import Loja.Dao.GeradorConexao;
 import Loja.controller.ClientController;
 import Loja.model.Client;
 
 import javax.swing.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -16,17 +22,24 @@ public class ClientActionMenu {
         this.clienteController = clienteController;
     }
 
-    public void register() {
+    public void register() throws SQLException {
 
-        String nome = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
-
+        String name = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
         String cpf = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite O CPF do Cliente: ");
-
         String endereco = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite endereço: ");
-
         String senha = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
 
-        clienteController.register(nome.toUpperCase(), cpf, endereco, senha);
+        Connection conexao = CreateConetion.getConexao();
+        String sql = "INSERT INTO client (name, cpf, endereco, senha) VALUES (?, ?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, name);
+        stmt.setString(2, cpf);
+        stmt.setString(3, endereco);
+        stmt.setString(4, senha);
+        clienteController.register(name.toUpperCase(), cpf, endereco);
+        stmt.execute();
+        showMessageDialog(null, "Cadastrado com sucesso");
+        conexao.close();
 
         showMessageDialog(null, "Cadastrado com sucesso");
     }
@@ -43,6 +56,7 @@ public class ClientActionMenu {
                 showMessageDialog(null, e.getMessage());
             }
     }
+
 }
 
 
