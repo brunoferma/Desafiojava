@@ -44,7 +44,7 @@ public class InitializeActionMenu {
     }
         int confirma = -1;
 
-    public void initialize() throws SQLException {
+    public void initialize() throws Exception {
 
 
         String op;

@@ -7,13 +7,15 @@ public class Client {
     private String cpf;
     private String endereco;
     private String senha;
-
-    public Client(String codigo, String nome, String cpf) {
+    public Client(String codigo, String nome,String cpf, String senha, String endereco) {
         this.codigo = codigo;
         this.name = nome;
         this.cpf = cpf;
         this.endereco = endereco;
         this.senha = senha;
+    }
+
+    public Client(int codigo, String nome) {
     }
 
     public String getName() {
@@ -46,6 +48,14 @@ public class Client {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     @Override

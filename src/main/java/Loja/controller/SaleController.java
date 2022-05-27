@@ -25,21 +25,21 @@ public class SaleController {
 
     public void register(String cpf, Map<String, Integer> produtosQtd){
         try {
-            Client cliente = clienteController.search(cpf);
+           // Client cliente = clienteController.register();
             List<Product>produtosVendidos = new ArrayList<Product>();
             for (Map.Entry<String, Integer> produtoQtd : produtosQtd.entrySet()){
-                Product produto = produtoController.search(produtoQtd.getKey());
+            //    Product produto = produtoController.search(produtoQtd.getKey());
 
-                    if(estoqueMaximo(produtoQtd.getValue(),produto.getProdutoQtd())){
-                        produtosVendidos.add(produto);
+              //      if(estoqueMaximo(produtoQtd.getValue(),produto.getProdutoQtd())){
+              //          produtosVendidos.add(produto);
                         showMessageDialog(null, "Cadastrado com sucesso");
-                    }else {
+              //      }else {
                         showMessageDialog(null, "Nao temos esta quantidade de produtos no estoque ");
                     }
 
-                Sale sale = new Sale(cliente, produtosVendidos);
-                sales.add(sale);
-            }
+      //          Sale sale = new Sale(cliente, produtosVendidos);
+      //          sales.add(sale);
+         //   }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
