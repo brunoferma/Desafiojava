@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.JOptionPane.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class ClientActionMenu {
@@ -23,10 +24,10 @@ public class ClientActionMenu {
 
     public void register() throws SQLException {
 
-        String name = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
-        String cpf = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite O CPF do Cliente: ");
-        String endereco = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nDigite endereço: ");
-        String senha = JOptionPane.showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
+        String name = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite o Nome do Cliente: ");
+        String cpf = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite O CPF do Cliente: ");
+        String endereco = showInputDialog("- CADASTRAR CLIENTE:\n\nDigite endereço: ");
+        String senha = showInputDialog("- CADASTRAR CLIENTE:\n\nCrie uma Senha: ");
 
         Connection conexao = CreateConetion.getConexao();
         String sql = "INSERT INTO client (name, cpf, endereco, senha) VALUES (?, ?, ?, ?)";
@@ -42,33 +43,81 @@ public class ClientActionMenu {
         showMessageDialog(null, "Cadastrado com sucesso");
     }
 
-    public void search()throws Exception{
+    public void search() throws Exception {
         Connection conexao = CreateConetion.getConexao();
         String sql = "SELECT * FROM client WHERE name like ?";
-        String valor = JOptionPane.showInputDialog("Entre com o name do cliente: ");
+        String valor = showInputDialog("Entre com o name do cliente: ");
         PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setString(1,"%" + valor + "%");
+        stmt.setString(1, "%" + valor + "%");
         ResultSet resultado = stmt.executeQuery();
         List<Client> client = new ArrayList<>();
 
-        while(resultado.next()){
+        while (resultado.next()) {
             String name = resultado.getString("name");
             String codigo = resultado.getString("codigo");
             String endereco = resultado.getString("endereco");
-            String cpf =  resultado.getString("cpf");
+            String cpf = resultado.getString("cpf");
             String senha = resultado.getString("senha");
-            client.add(new Client(name, codigo, endereco,cpf, senha));
+            client.add(new Client(name, codigo));
             break;
         }
 
-        for (Client p: client){
-            showMessageDialog(null, "\n Codigo: " +p.getName()
-                    + "\n Nome:  "  + p.getCodigo()
+        for (Client p : client) {
+            showMessageDialog(null, "\n Codigo: " + p.getName()
+                    + "\n Nome:  " + p.getCodigo()
                     + "\n Senha: " + p.getEndereco()
                     + "\n Endereço: " + p.getCpf()
-                    + "\n Cpf: "+ p.getSenha());
+                    + "\n Cpf: " + p.getSenha());
         }
 
+    }
+
+    public void delete() throws Exception {
+
+        String codigo = showInputDialog("Entre com o codigo do cliente: ");
+
+        Connection conexao = CreateConetion.getConexao();
+        String sql = "DELETE FROM client WHERE codigo = ?";
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, codigo);
+
+        if (stmt.executeUpdate() > 0) {
+            showMessageDialog(null, "Pessoa excluida com sucesso!");
+        } else {
+            showMessageDialog(null, "Nada realizado");
+        }
+    }
+
+    public void update() throws Exception {
+
+        String codigo = showInputDialog("Informe o codigo da pessoa: ");
+
+        String selectSql = "SELECT codigo, name FROM client WHERE codigo = ? ";
+        String updateSql = "UPDATE client SET name = ? WHERE codigo = ?";
+
+        Connection conexao = CreateConetion.getConexao();
+        PreparedStatement stmt = conexao.prepareStatement(selectSql);
+        stmt.setString(1, codigo);
+        ResultSet r = stmt.executeQuery();
+
+        if (r.next()) {
+            Client p = new Client(r.getString(1), r.getString(2));
+            showMessageDialog(null, "O nome atual é " + p.getName());
+
+            String novoNome = showInputDialog("Informe um novo nome: ");
+
+            stmt.close();
+            stmt = conexao.prepareStatement(updateSql);
+            stmt.setString(1, novoNome);
+            stmt.setString(2, codigo);
+            stmt.execute();
+
+            showMessageDialog(null, " Cliente alterado com sucesso ");
+        } else {
+            showMessageDialog(null, " Cliente nao encontrado no banco de dados ");
+
+        }
     }
 
 }

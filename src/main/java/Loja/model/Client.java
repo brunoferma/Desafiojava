@@ -7,7 +7,8 @@ public class Client {
     private String cpf;
     private String endereco;
     private String senha;
-    public Client(String codigo, String nome,String cpf, String senha, String endereco) {
+
+    public Client(String codigo, String nome) {
         this.codigo = codigo;
         this.name = nome;
         this.cpf = cpf;

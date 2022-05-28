@@ -10,16 +10,17 @@ import java.util.Properties;
 public class CreateConetion {
     public static Connection getConexao() {
         try {
-        Properties prop = getProperties();
-        final String url = prop.getProperty("banco.url");
-        final String user = prop.getProperty("banco.usuario");
-        final String senha = prop.getProperty("banco.senha");
+            Properties prop = getProperties();
+            final String url = prop.getProperty("banco.url");
+            final String user = prop.getProperty("banco.usuario");
+            final String senha = prop.getProperty("banco.senha");
 
-        return DriverManager.getConnection(url, user, senha);
-    } catch (SQLException | IOException e) {
-        throw new RuntimeException(e);
+            return DriverManager.getConnection(url, user, senha);
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-}
+
     private static Properties getProperties() throws IOException {
         Properties prop = new Properties();
         FileInputStream fis = new FileInputStream("src/main/java/Loja/conection.properties");

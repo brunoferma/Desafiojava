@@ -1,6 +1,5 @@
 package Loja.view;
 
-import Loja.Dao.CreateConetion;
 import Loja.Dao.CreateDataBase;
 import Loja.Dao.GenerateDatabase;
 import Loja.controller.ClientController;
@@ -8,8 +7,6 @@ import Loja.controller.ProductController;
 import Loja.controller.SaleController;
 
 import javax.swing.*;
-
-import java.sql.SQLException;
 
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -42,7 +39,8 @@ public class InitializeActionMenu {
 
 
     }
-        int confirma = -1;
+
+    int confirma = -1;
 
     public void initialize() throws Exception {
 
@@ -55,12 +53,15 @@ public class InitializeActionMenu {
             op = JOptionPane.showInputDialog("SISTEMA DE VENDA - v1.0:\n\n"
                     + "1 - Cadastrar Clientes.\n"
                     + "2 - Consultar Clientes.\n"
-                    + "3 - Cadastrar Produtos.\n"
-                    + "4 - Consultar Produtos.\n"
-                    + "5 - Registrar Venda.\n"
-                    + "6-  Criar tabela de Produto.\n"
-                    + "7-  Criar tabela de Cliente.\n"
-                    + "8 - Sair.\n\n");
+                    + "3 - Atualizar Clientes.\n"
+                    + "4 - Deletar Clientess.\n"
+                    + "5 - Cadastrar Produtos.\n"
+                    + "6 - Consultar Produtos.\n"
+                    + "7 - Atualizar Produtos.\n"
+                    + "8-  Deletar Produtos.\n"
+                    + "9-  Registar Venda.\n"
+                    + "10-  Criar Banco, Tabela e conexões.\n"
+                    + "11 - Sair.\n\n");
 
             if (op == null) {
                 op = "0";
@@ -78,29 +79,40 @@ public class InitializeActionMenu {
 
             } else if (opcao == 3) {
 
-                this.produtoActionMenu.register();
+                this.clienteActionMenu.update();
 
             } else if (opcao == 4) {
 
-                this.produtoActionMenu.search();
+                this.clienteActionMenu.delete();
 
             } else if (opcao == 5) {
 
-               this.vendActionMenu.register();
+                this.produtoActionMenu.register();
 
-            }
-            else if (opcao == 6) {
+            } else if (opcao == 6) {
 
-                this.produtoController.criaTabela();
-                this.clienteController.criarTabela();
+                this.produtoActionMenu.search();
 
-            }
-            else if (opcao == 7) {
+            } else if (opcao == 7) {
+
+                this.produtoActionMenu.update();
+
+            } else if (opcao == 8) {
+
+                this.produtoActionMenu.delete();
+
+            } else if (opcao == 9) {
+
+                this.vendActionMenu.register();
+
+            } else if (opcao == 10) {
 
                 this.createDataBase.criarBanco();
                 this.generateDatabase.gerarConexao();
+                this.produtoController.criaTabela();
+                this.clienteController.criarTabela();
 
-            }else if (opcao == 8 || opcao == 0) {
+            } else if (opcao == 11 || opcao == 0) {
 
                 Sair();
 

@@ -2,17 +2,17 @@ package Loja.model;
 
 public class Product {
 
-        private String codProd;
-        private String descrProd;
-        private int produtoQtd;
-        private double preco;
+    private String codProd;
+    private String descrProd;
+    private int produtoQtd;
+    private double preco;
 
-        public Product(String codProd, int produtoQtd, double preco, String descrProd) {
-            this.codProd = codProd;
-            this.descrProd = descrProd;
-            this.produtoQtd = produtoQtd;
-            this.preco = preco;
-        }
+    public Product(String codProd, int produtoQtd, double preco, String descrProd) {
+        this.codProd = codProd;
+        this.descrProd = descrProd;
+        this.produtoQtd = produtoQtd;
+        this.preco = preco;
+    }
 
     public String getCodProd() {
         return codProd;
@@ -47,16 +47,16 @@ public class Product {
     }
 
     @Override
-        public String toString() {
-            StringBuilder builder = new StringBuilder();
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
 
-            return builder.append("************************\n")
-                    .append("Codigo: ").append(this.codProd).append("\n")
-                    .append("Descrição: ").append(this.descrProd).append("\n")
-                    .append("Quantidade: ").append(this.produtoQtd).append("\n")
-                    .append("Preco: ").append(this.preco).append("\n")
-                    .append("************************")
-                    .toString();
-        }
-
+        return builder.append("************************\n")
+                .append("Codigo: ").append(this.codProd).append("\n")
+                .append("Descrição: ").append(this.descrProd).append("\n")
+                .append("Quantidade: ").append(this.produtoQtd).append("\n")
+                .append("Preco: ").append(this.preco).append("\n")
+                .append("************************")
+                .toString();
     }
+
+}

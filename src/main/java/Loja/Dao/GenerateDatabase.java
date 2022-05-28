@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GenerateDatabase {
-    public void gerarConexao () throws SQLException {
+    public void gerarConexao() throws SQLException {
 
         Connection conexao = CreateConetion.getConexao();
         showMessageDialog(null, "conexao efetuada com sucesso");

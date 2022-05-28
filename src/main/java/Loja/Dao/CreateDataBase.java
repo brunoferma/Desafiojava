@@ -7,7 +7,7 @@ import java.sql.Statement;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class CreateDataBase {
-    public void criarBanco () throws SQLException {
+    public void criarBanco() throws SQLException {
 
         Connection conexao = CreateConetion.getConexao();
         Statement stmt = conexao.createStatement();
