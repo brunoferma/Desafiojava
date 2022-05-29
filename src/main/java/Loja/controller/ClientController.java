@@ -13,8 +13,8 @@ public class ClientController {
 
     private List<Client> clients = new ArrayList<Client>();
 
-    public void register(String nome, String cpf, String endereco, String senha, String codigo) {
-        Client client = new Client(nome, cpf);
+    public void register(String codigo, String nome, String cpf, String endereco, String senha) {
+        Client client = new Client(codigo, nome, cpf, endereco, senha);
         clients.add(client);
     }
 

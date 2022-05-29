@@ -7,7 +7,7 @@ public class Product {
     private int produtoQtd;
     private double preco;
 
-    public Product(String codProd, int produtoQtd, double preco, String descrProd) {
+    public Product(String codProd,String descrProd, int produtoQtd, double preco) {
         this.codProd = codProd;
         this.descrProd = descrProd;
         this.produtoQtd = produtoQtd;
@@ -34,8 +34,8 @@ public class Product {
         return produtoQtd;
     }
 
-    public void setProdutoQtd(int produtoQtd) {
-        this.produtoQtd = produtoQtd;
+    public void setProdutoQtd(String produtoQtd) {
+        this.produtoQtd = Integer.parseInt(produtoQtd);
     }
 
     public double getPreco() {

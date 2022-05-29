@@ -58,16 +58,16 @@ public class ClientActionMenu {
             String endereco = resultado.getString("endereco");
             String cpf = resultado.getString("cpf");
             String senha = resultado.getString("senha");
-            client.add(new Client(name, codigo));
+            client.add(new Client(codigo, name, cpf, endereco, senha));
             break;
         }
 
         for (Client p : client) {
-            showMessageDialog(null, "\n Codigo: " + p.getName()
-                    + "\n Nome:  " + p.getCodigo()
-                    + "\n Senha: " + p.getEndereco()
-                    + "\n Endereço: " + p.getCpf()
-                    + "\n Cpf: " + p.getSenha());
+            showMessageDialog(null, "\n Codigo: " + p.getCodigo()
+                    + "\n Nome:  " + p.getName()
+                    + "\n cpf: " + p.getCpf()
+                    + "\n Endereço: " + p.getEndereco()
+                    + "\n senha: " + p.getSenha());
         }
 
     }
@@ -102,7 +102,7 @@ public class ClientActionMenu {
         ResultSet r = stmt.executeQuery();
 
         if (r.next()) {
-            Client p = new Client(r.getString(1), r.getString(2));
+            Client p = new Client(r.getString(1), r.getString(2), r.getString(2), r.getString(2), r.getString(2));
             showMessageDialog(null, "O nome atual é " + p.getName());
 
             String novoNome = showInputDialog("Informe um novo nome: ");

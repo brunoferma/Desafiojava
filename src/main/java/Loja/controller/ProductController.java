@@ -15,8 +15,8 @@ public class ProductController {
 
     private List<Product> produtos = new ArrayList<Product>();
 
-    public void register(String codProd, int produtoQtd, double preco, String descProd) {
-        Product produto = new Product(codProd, produtoQtd, preco, descProd);
+    public void register(String codProd, String descProd, int produtoQtd, double preco) {
+        Product produto = new Product(codProd, descProd, produtoQtd, preco);
         produtos.add(produto);
     }
 

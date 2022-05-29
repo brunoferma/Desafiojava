@@ -2,7 +2,6 @@ package Loja.view;
 
 import Loja.Dao.CreateConetion;
 import Loja.controller.ProductController;
-import Loja.model.Client;
 import Loja.model.Product;
 
 import javax.swing.*;
@@ -59,15 +58,15 @@ public class ProductActionMenu {
             int produtoqtd = resultado.getInt("produtoqtd");
             double preco = resultado.getDouble("preco");
             String codprodut = resultado.getString("codproduct");
-            productos.add(new Product(descProd, produtoqtd, preco, codprodut));
+            productos.add(new Product(codprodut,descProd,produtoqtd, preco));
             break;
         }
 
         for (Product p : productos) {
-            showMessageDialog(null, "\n Nome: " + p.getCodProd()
-                    + "\n Codigo:  " + p.getDescrProd()
-                    + "\n Preço : " + p.getPreco()
-                    + "\n Quantidade: " + p.getProdutoQtd());
+            showMessageDialog(null, "\n Codigo: " + p.getCodProd()
+                    + "\n Nome:  " + p.getDescrProd()
+                    + "\n Quantidade : " + p.getProdutoQtd()
+                    + "\n Preco: " + p.getPreco());
         }
 
     }
@@ -93,8 +92,8 @@ public class ProductActionMenu {
 
         String codigo = showInputDialog("Informe o codigo da produto: ");
 
-        String selectSql = "SELECT codproduct, descprod FROM product WHERE codproduct = ? ";
-        String updateSql = "UPDATE product SET descprod = ? WHERE codproduct = ?";
+        String selectSql = "SELECT codproduct, descprod, produtoQtd FROM product WHERE codproduct = ? ";
+        String updateSql = "UPDATE product SET produtoQtd = ? WHERE codproduct = ?";
 
         Connection conexao = CreateConetion.getConexao();
         PreparedStatement stmt = conexao.prepareStatement(selectSql);
@@ -102,18 +101,18 @@ public class ProductActionMenu {
         ResultSet r = stmt.executeQuery();
 
         if (r.next()) {
-            Client p = new Client(r.getString(1), r.getString(2));
-            showMessageDialog(null, "O produto atual é " + p.getName());
+            Product c = new Product(r.getString(1), r.getString(2),r.getInt(3),r.getDouble(3));
+           showMessageDialog(null, "O produto selecionado foi a "+ c.getDescrProd()+ " que tem atualmente "+ c.getPreco()+ " volumes no estoque");
 
-            String novoNome = showInputDialog("Informe o nome do novo produto: ");
+            String novaQtd = showInputDialog("Informe a nova quantidade de "+ c.getDescrProd());
 
             stmt.close();
             stmt = conexao.prepareStatement(updateSql);
-            stmt.setString(1, novoNome);
+            stmt.setString(1, novaQtd);
             stmt.setString(2, codigo);
             stmt.execute();
 
-            showMessageDialog(null, " Produto alterado com sucesso ");
+            showMessageDialog(null, " A quantidade de "+ c.getDescrProd()+ " foi  alterado com sucesso ");
         } else {
             showMessageDialog(null, " Produto nao encontrado no banco de dados ");
 
