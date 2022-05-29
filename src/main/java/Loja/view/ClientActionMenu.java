@@ -42,7 +42,6 @@ public class ClientActionMenu {
 
         showMessageDialog(null, "Cadastrado com sucesso");
     }
-
     public void search() throws Exception {
         Connection conexao = CreateConetion.getConexao();
         String sql = "SELECT * FROM client WHERE name like ?";

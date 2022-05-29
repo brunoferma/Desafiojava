@@ -18,7 +18,6 @@ public class ClientController {
         clients.add(client);
     }
 
-
     public void criarTabela() throws SQLException {
         Connection conexao = CreateConetion.getConexao();
         String sql = String.format("CREATE TABLE IF NOT EXISTS client (codigo INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(80)NOT NULL,cpf VARCHAR(10)NOT NULL,endereco VARCHAR(50)NOT NULL,senha VARCHAR(10)NOT NULL)");

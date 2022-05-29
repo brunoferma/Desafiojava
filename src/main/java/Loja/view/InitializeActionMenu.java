@@ -36,14 +36,11 @@ public class InitializeActionMenu {
         this.vendActionMenu = new SaleActionMenu(jOptionPane, vendaController);
         this.createDataBase = new CreateDataBase();
         this.generateDatabase = new GenerateDatabase();
-
-
     }
 
     int confirma = -1;
 
     public void initialize() throws Exception {
-
 
         String op;
         int opcao;
@@ -113,17 +110,13 @@ public class InitializeActionMenu {
                 this.clienteController.criarTabela();
 
             } else if (opcao == 11 || opcao == 0) {
-
                 Sair();
-
             } else {
 
                 showMessageDialog(null, "Opção Inválida!!!");
-
             }
 
         } while (confirma != 0);
-
     }
 
     private void Sair() {
